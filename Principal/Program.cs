@@ -16,7 +16,7 @@ namespace Principal
             _class1 = new Class1();
             Program program = new Program();
             //program.Create();
-            //program.Read();//Intro
+            program.Read();//Intro
             //program.Read();//0
             //program.Read();//1
             //program.Read();//Angel
@@ -104,6 +104,13 @@ namespace Principal
                     {
                         personas[i].nombre = texto;
                         ok = true;
+                    }
+
+                    //NO ES NECESARIO DEBIDO A LA INTERRELACIÓN DE OBJETOS
+                    //SI ELIMINAMOS ESTE IF() FUNCIONA IGUAL
+                    if (ok == true)
+                    {
+                        ok = _class1.Update(personas);
                     }
 
                     if (ok == true)

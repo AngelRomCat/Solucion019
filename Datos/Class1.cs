@@ -91,5 +91,19 @@ namespace Datos
 
             return ok;
         }
+
+        public bool Update(IList<persona> personas)
+        {
+            bool ok = false;
+
+            for (int i = 0; i < personas.Count; i++)
+            {
+                _db.persona.Where(x => x.id == i).FirstOrDefault().nombre = personas[i].nombre;
+
+                ok = true;
+            }
+
+            return ok;
+        }
     }
 }
