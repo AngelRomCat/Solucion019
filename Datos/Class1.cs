@@ -80,26 +80,28 @@ namespace Datos
             return personas;
         }
 
+        ////NO ES NECESARIO DEBIDO A LA INTERRELACIÓN DE OBJETOS
+        ////SI ELIMINAMOS ESTE MÉTODO FUNCIONA IGUAL
+        public bool Update(IList<persona> personas)
+        {
+            bool ok = false;
+
+            foreach (var persona in personas)
+            {
+                _db.persona.Where(x => x.id == persona.id).FirstOrDefault().nombre = persona.nombre;
+                ok = true;
+            }
+
+            return ok;
+        }
+        ////HASTA AQUÍ...
+
         public bool Delete(IList<persona> personas)
         {
             bool ok = false;
             foreach (persona persona in personas)
             {
                 _db.persona.Remove(persona);
-                ok = true;
-            }
-
-            return ok;
-        }
-
-        public bool Update(IList<persona> personas)
-        {
-            bool ok = false;
-
-            for (int i = 0; i < personas.Count; i++)
-            {
-                _db.persona.Where(x => x.id == i).FirstOrDefault().nombre = personas[i].nombre;
-
                 ok = true;
             }
 
