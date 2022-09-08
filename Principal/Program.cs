@@ -15,11 +15,13 @@ namespace Principal
         {
             _class1 = new Class1();
             Program program = new Program();
-            program.Create();
-            program.Read();
-            program.Read();
-            program.Read();
-            program.Read();
+            //program.Create();
+            //program.Read();//Intro
+            //program.Read();//0
+            //program.Read();//1
+            //program.Read();//Angel
+
+            program.Update();
             program.Read();
         }
 
@@ -67,9 +69,43 @@ namespace Principal
             //personas = new List<persona>();
             personas = _class1.Read(texto);
 
-            foreach(persona persona in personas)
+            foreach (persona persona in personas)
             {
                 Console.WriteLine(persona.id + " " + persona.nombre);
+            }
+            Console.ReadLine();
+        }
+
+        private void Update()
+        {
+            Console.WriteLine("Escribe el ID o el NOMBRE de los registros que quieres modificar");
+            string texto = Console.ReadLine();
+
+            IList<persona> personas = null;
+            //personas = new List<persona>();
+            personas = _class1.Read(texto);
+
+            Console.WriteLine("Escribe el nuevo NOMBRE de los registros que quieres modificar");
+            texto = Console.ReadLine();
+
+            bool id = false;
+            if (texto != null && texto != "")
+            {
+                ////foreach NO PUEDE MODIFICAR LOS ATRIBUTOS DE SUS OBJETOS
+                //foreach (persona persona in personas)
+                //{
+                //    persona.nombre = texto;
+                //}
+                for (int i = 0; i < personas.Count; i++)
+                {
+                    personas[i].nombre = texto;
+                    id = true;
+                }
+
+                if (id==true)
+                {
+                    _class1.GuardarCambios();
+                }
             }
             Console.ReadLine();
         }

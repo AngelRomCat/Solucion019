@@ -60,7 +60,6 @@ namespace Datos
                 if (int.TryParse(texto, out id) == true)
                 {   //texto == INT
                     id = int.Parse(texto);
-
                     
                     if (id > 0)
                     {//texto > 0
