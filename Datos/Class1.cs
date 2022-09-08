@@ -79,5 +79,16 @@ namespace Datos
 
             return personas;
         }
+
+        public bool Delete(IList<persona> personas)
+        {
+            bool ok = false;
+            foreach (persona persona in personas)
+            {
+                _db.persona.Remove(persona);
+            }
+
+            return ok;
+        }
     }
 }

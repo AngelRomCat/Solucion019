@@ -21,7 +21,9 @@ namespace Principal
             //program.Read();//1
             //program.Read();//Angel
 
-            program.Update();
+            //program.Update();
+            program.Read();
+            program.Delete();
             program.Read();
         }
 
@@ -82,27 +84,50 @@ namespace Principal
             string texto = Console.ReadLine();
 
             IList<persona> personas = null;
-            //personas = new List<persona>();
-            personas = _class1.Read(texto);
-
-            Console.WriteLine("Escribe el nuevo NOMBRE de los registros que quieres modificar");
-            texto = Console.ReadLine();
-
-            bool id = false;
             if (texto != null && texto != "")
             {
-                ////foreach NO PUEDE MODIFICAR LOS ATRIBUTOS DE SUS OBJETOS
-                //foreach (persona persona in personas)
-                //{
-                //    persona.nombre = texto;
-                //}
-                for (int i = 0; i < personas.Count; i++)
-                {
-                    personas[i].nombre = texto;
-                    id = true;
-                }
+                personas = _class1.Read(texto);
 
-                if (id==true)
+                Console.WriteLine("Escribe el nuevo NOMBRE de los registros que quieres modificar");
+                texto = Console.ReadLine();
+
+                bool ok = false;
+                if (texto != null && texto != "")
+                {
+                    ////foreach NO PUEDE MODIFICAR LOS ATRIBUTOS DE SUS OBJETOS
+                    //foreach (persona persona in personas)
+                    //{
+                    //    persona.nombre = texto;
+                    //}
+                    for (int i = 0; i < personas.Count; i++)
+                    {
+                        personas[i].nombre = texto;
+                        ok = true;
+                    }
+
+                    if (ok == true)
+                    {
+                        _class1.GuardarCambios();
+                    }
+                }
+            }
+            Console.ReadLine();
+        }
+
+        private void Delete()
+        {
+            Console.WriteLine("Escribe el ID o el NOMBRE de los registros que quieres eliminar");
+            string texto = Console.ReadLine();
+
+            IList<persona> personas = null;
+            if (texto != null && texto != "")
+            {
+                personas = _class1.Read(texto);
+
+                bool ok = false;
+                ok = _class1.Delete(personas);
+
+                if (ok == true)
                 {
                     _class1.GuardarCambios();
                 }
