@@ -86,6 +86,7 @@ namespace Datos
             foreach (persona persona in personas)
             {
                 _db.persona.Remove(persona);
+                ok = true;
             }
 
             return ok;

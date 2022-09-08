@@ -22,9 +22,10 @@ namespace Principal
             //program.Read();//Angel
 
             //program.Update();
-            program.Read();
-            program.Delete();
-            program.Read();
+            //program.Read();
+            //program.Delete();
+            //program.Read();
+            program.ExperimentoConObjetosIguales();
         }
 
         private void Create()
@@ -107,8 +108,9 @@ namespace Principal
 
                     if (ok == true)
                     {
-                        _class1.GuardarCambios();
+                        ok = _class1.GuardarCambios();
                     }
+                    Console.WriteLine("La modificación de los registros ha sido: " + ok);
                 }
             }
             Console.ReadLine();
@@ -129,9 +131,48 @@ namespace Principal
 
                 if (ok == true)
                 {
-                    _class1.GuardarCambios();
+                    ok = _class1.GuardarCambios();
                 }
+                Console.WriteLine("La eliminación de los registros ha sido: " + ok);
             }
+            Console.ReadLine();
+        }
+
+        private void ExperimentoConObjetosIguales()
+        {
+            //Creamos un objeto de la clase Fruta llamado: frutaOriginal
+            //cuyos atributos valdrán: Amarillo, Plátano, Alargado y blando
+            Fruta frutaOriginal = null;
+            frutaOriginal = new Fruta();
+            frutaOriginal.name = "Plátano";
+            frutaOriginal.color = "Amarillo";
+            frutaOriginal.description = "Alargado y blando";
+
+            Console.WriteLine("Valores de frutaOriginal: ");
+            Console.WriteLine(frutaOriginal.name + ", " + frutaOriginal.color + " y " + frutaOriginal.description);
+            Console.ReadLine();
+
+            Fruta frutaModificada = null;
+            frutaModificada = frutaOriginal;
+
+            frutaModificada.name = "Pera";
+            frutaModificada.color = "Verde";
+            frutaModificada.description = "Con forma de pera";
+
+            Console.WriteLine("Valores de frutaOriginal: ");
+            Console.WriteLine(frutaOriginal.name + ", " + frutaOriginal.color + " y " + frutaOriginal.description);
+            Console.ReadLine();
+
+            frutaOriginal.name = "Plátano";
+            frutaOriginal.color = "Amarillo";
+            frutaOriginal.description = "Alargado y blando";
+
+            Console.WriteLine("Valores de frutaOriginal: ");
+            Console.WriteLine(frutaOriginal.name + ", " + frutaOriginal.color + " y " + frutaOriginal.description);
+            Console.ReadLine();
+
+            Console.WriteLine("Valores de frutaModificada: ");
+            Console.WriteLine(frutaModificada.name + ", " + frutaModificada.color + " y " + frutaModificada.description);
             Console.ReadLine();
         }
     }
