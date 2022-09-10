@@ -2,9 +2,6 @@
 using Datos.Datos;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Principal
 {
@@ -106,13 +103,13 @@ namespace Principal
                         ok = true;
                     }
 
-                    ////NO ES NECESARIO DEBIDO A LA INTERRELACIÓN DE OBJETOS
-                    ////SI ELIMINAMOS ESTE IF() FUNCIONA IGUAL
-                    //if (ok == true)
-                    //{
-                    //    ok = _class1.Update(personas);
-                    //}
-                    ////HASTA AQUÍ...
+                    //NO ES NECESARIO DEBIDO A LA INTERRELACIÓN DE OBJETOS
+                    //SI ELIMINAMOS ESTE IF() FUNCIONA IGUAL
+                    if (ok == true)
+                    {
+                        ok = _class1.Update(personas);
+                    }
+                    //HASTA AQUÍ...
 
                     if (ok == true)
                     {
@@ -150,6 +147,7 @@ namespace Principal
         {
             //Creamos un objeto de la clase Fruta llamado: frutaOriginal
             //cuyos atributos valdrán: Amarillo, Plátano, Alargado y blando
+            Console.WriteLine("Creamos frutaOriginal: ");
             Fruta frutaOriginal = null;
             frutaOriginal = new Fruta();
             frutaOriginal.name = "Plátano";
@@ -160,9 +158,11 @@ namespace Principal
             Console.WriteLine(frutaOriginal.name + ", " + frutaOriginal.color + " y " + frutaOriginal.description);
             Console.ReadLine();
 
+            Console.WriteLine("Creamos frutaModificada: ");
             Fruta frutaModificada = null;
             frutaModificada = frutaOriginal;
 
+            Console.WriteLine("Cambiamos los Valores de frutaModificada: ");
             frutaModificada.name = "Pera";
             frutaModificada.color = "Verde";
             frutaModificada.description = "Con forma de pera";
@@ -171,6 +171,7 @@ namespace Principal
             Console.WriteLine(frutaOriginal.name + ", " + frutaOriginal.color + " y " + frutaOriginal.description);
             Console.ReadLine();
 
+            Console.WriteLine("Cambiamos los Valores de frutaOriginal: ");
             frutaOriginal.name = "Plátano";
             frutaOriginal.color = "Amarillo";
             frutaOriginal.description = "Alargado y blando";
